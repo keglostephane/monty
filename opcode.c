@@ -15,7 +15,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		is_number = _isnumber(str_int);
 	if (is_number != 1 || !str_int)
 	{
-		printf("L%d: usage: push integer\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		exec_value = 1;
 	}
 	else
@@ -53,7 +53,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack)
 	{
-		printf("L%d: can't pint, stack empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
 		exec_value = 1;
 	}
 	else

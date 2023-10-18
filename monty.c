@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	stack = NULL;
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		__exit(&stack);
 	}
 	check = read_file(argv[1], &stack);
