@@ -62,3 +62,15 @@ void _pint(stack_t **stack, unsigned int line_number)
 		exec_value = 0;
 	}
 }
+/**
+ * _nop - a function that do anything on call
+ * @stack: stack
+ * @line_number: line number
+ * Return: void
+ */
+void _nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+	exec_value = 0;
+}
