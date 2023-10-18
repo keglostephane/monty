@@ -20,5 +20,5 @@ int main(int argc, char **argv)
 	check = read_file(argv[1], &stack);
 	if (check == 0)
 		free_stack(stack);
-	return (exec_value);
+	return (0);
 }
