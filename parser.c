@@ -18,7 +18,7 @@ int read_file(char *filename, stack_t **stack)
 
 	if (fp == NULL)
 	{
-		dprintf(STDERR_FILENO,"Error: Can't open file %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		__exit(stack);
 	}
 	while ((rstatus = getline(&line, &linesize, fp)) != -1)
@@ -52,6 +52,7 @@ void get_func(char *opcode, stack_t **stack, unsigned int line_count)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
+		{"nop", _nop},
 		{NULL, NULL}
 	};
 	int i, is_opcode = 0;
