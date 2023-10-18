@@ -1,11 +1,18 @@
 #ifndef MONTY_H
 #define MONTY_H
-
+#define  _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <elf.h>
+
+#define DELIMITERS "\n "
+int exec_value;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -41,4 +48,22 @@ stack_t *add_dnodeint_end(stack_t **head, const int n);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void free_stack(stack_t *head);
 
+
+/******* parser.c *******/
+int read_file(char *filename, stack_t **stack);
+void get_func(char *opcode, stack_t **stack, unsigned int line_count);
+
+/*===================== OPCODE FUNCTIONS PROTOTYPES =========================*/
+ /********* opcode.c *****************/
+void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+/***** int.c **************/
+int _isnumber(char *c);
+
+/**** string.c **************/
+int _strcmp(char *s1, char *s2);
+
+/**** builtin.c *************/
+int __exit(stack_t **stack);
 #endif
