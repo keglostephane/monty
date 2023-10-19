@@ -1,5 +1,5 @@
 #include "monty.h"
-#include <stdio.h>
+
 /**
  * read_file - er input from stdin
  *
@@ -12,26 +12,30 @@ int read_file(char *filename, stack_t **stack)
 	char *line = NULL;
 	char *opcode = NULL;
 	size_t linesize = 0;
-	ssize_t rstatus;
+	ssize_t nread;
 	int line_count = 1;
 	FILE *fp = fopen(filename, "r");
 
 	if (fp == NULL)
-	{
-		dprintf(STDERR_FILENO,"Error: Can't open file %s\n", filename);
-		__exit(stack);
-	}
-	while ((rstatus = getline(&line, &linesize, fp)) != -1)
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
+	while ((nread = getline(&line, &linesize, fp)) != -1)
 	{
 		opcode = strtok(line, DELIMITERS);
-		get_func(opcode, stack, line_count);
-		if (exec_value == 1)
+
+		if (opcode == NULL)
+			line_count++;
+		if (opcode != NULL)
 		{
-			free(line);
-			fclose(fp);
-			__exit(stack);
+			get_func(opcode, stack, line_count);
+			if (exec_value == 1)
+			{
+				free(line);
+				fclose(fp);
+				free_stack(*stack);
+				exit(EXIT_FAILURE);
+			}
+			line_count++;
 		}
-		line_count++;
 
 
 	}
@@ -57,7 +61,7 @@ void get_func(char *opcode, stack_t **stack, unsigned int line_count)
 	int i, is_opcode = 0;
 
 	for (i = 0; fspec[i].opcode; i++)
-		if (_strcmp(fspec[i].opcode, opcode) == 0)
+		if (strcmp(fspec[i].opcode, opcode) == 0)
 		{
 			fspec[i].f(stack, line_count);
 			is_opcode = 1;
