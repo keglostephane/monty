@@ -51,3 +51,28 @@ void _swap(stack_t **stack, unsigned int line_number)
 		exec_value = 0;
 	}
 }
+
+/**
+ * _sub - substracts the top element of the stack from the second top element
+ *
+ * @stack: the stack
+ * @line_number: instruction line number
+ */
+void _sub(stack_t **stack, unsigned int line_number)
+{
+	size_t len;
+
+	len = stack_len(*stack);
+
+	if (len < 2)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", line_number);
+		exec_value = 1;
+	}
+	else
+	{
+		(*stack)->next->n -= (*stack)->n;
+		_pop(stack, line_number);
+		exec_value = 0;
+	}
+}
