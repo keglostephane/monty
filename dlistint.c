@@ -125,3 +125,22 @@ void free_stack(stack_t *head)
 		}
 	}
 }
+/**
+ * stack_len - returns the number of elements in a doubly linked list
+ *
+ * @h: head of the doubly linked list
+ *
+ * Return: the number of elements
+ */
+size_t stack_len(const stack_t *h)
+{
+	unsigned int n = 0;
+	const stack_t *curr = h;
+
+	while (curr)
+	{
+		curr = curr->next;
+		n++;
+	}
+	return (n);
+}
