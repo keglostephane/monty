@@ -39,11 +39,14 @@ int read_file(char *filename, stack_t **stack)
 			}
 			line_count++;
 		}
-
-
 	}
 	free(line);
 	fclose(fp);
+	if (nread == -1)
+	{
+		exit(EXIT_FAILURE);
+		free_stack(*stack);
+	}
 	return (0);
 }
 /**
