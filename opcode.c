@@ -7,20 +7,22 @@
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	int data, is_number = 2;
-	char *str_int = NULL;
+	int data;
+	long num;
+	char *str, *end;
 
-	str_int = strtok(NULL, DELIMITERS);
-	if (str_int != NULL)
-		is_number = _isnumber(str_int);
-	if (is_number != 1 || !str_int)
+	str = strtok(NULL, DELIMITERS);
+
+	if (str != NULL)
+		num = strtol(str, &end, 10);
+	if (str == NULL || str == end)
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		exec_value = 1;
 	}
 	else
 	{
-		data = atoi(str_int);
+		data = (int)(num);
 		add_dnodeint(stack, data);
 		exec_value = 0;
 	}
