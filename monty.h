@@ -1,17 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
-#define  _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <elf.h>
 
-#define DELIMITERS "\n "
+#define DELIMITERS "\n\t "
 int exec_value;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -59,12 +53,5 @@ void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
-/***** int.c **************/
-int _isnumber(char *c);
 
-/**** string.c **************/
-int _strcmp(char *s1, char *s2);
-
-/**** builtin.c *************/
-int __exit(stack_t **stack);
 #endif

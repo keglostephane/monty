@@ -114,11 +114,14 @@ void free_stack(stack_t *head)
 {
 	stack_t *temp, *next;
 
-	temp = head;
-	while (temp)
+	if (head != NULL)
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		temp = head;
+		while (temp)
+		{
+			next = temp->next;
+			free(temp);
+			temp = next;
+		}
 	}
 }

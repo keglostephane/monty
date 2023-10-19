@@ -5,20 +5,21 @@
  * @argv: array of args
  * Return: 0 always success
  */
+
 int main(int argc, char **argv)
 {
-	int check;
-	stack_t *stack;
+	stack_t *stack = NULL;
 
 	exec_value = 0;
-	stack = NULL;
+
 	if (argc != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
-		__exit(&stack);
+		exit(EXIT_FAILURE);
 	}
-	check = read_file(argv[1], &stack);
-	if (check == 0)
-		free_stack(stack);
-	return (0);
+
+	read_file(argv[1], &stack);
+
+	free_stack(stack);
+	exit(EXIT_SUCCESS);
 }
