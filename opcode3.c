@@ -62,3 +62,22 @@ void _pchar(stack_t **stack, unsigned int line_number)
 		exec_value = 0;
 	}
 }
+
+/**
+ * _pstr - prints the string at the top of the stack
+ *
+ * @stack: the stack
+ * @line_number: instruction line number
+ *
+ */
+void _pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top;
+
+	(void)line_number;
+
+	for (top = *stack; top && top->n && isascii(top->n); top = top->next)
+		putchar(top->n);
+
+	printf("\n");
+}
