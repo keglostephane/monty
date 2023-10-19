@@ -17,7 +17,10 @@ int read_file(char *filename, stack_t **stack)
 	FILE *fp = fopen(filename, "r");
 
 	if (fp == NULL)
+	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
 	while ((nread = getline(&line, &linesize, fp)) != -1)
 	{
 		opcode = strtok(line, DELIMITERS);
