@@ -42,14 +42,15 @@ void _pchar(stack_t **stack, unsigned int line_number)
 {
 	int num;
 
-	num = (*stack)->n;
+	if (*stack != NULL)
+		num = (*stack)->n;
 
 	if (*stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", line_number);
 		exec_value = 1;
 	}
-	if (num < 0 || num > 127)
+	if (*stack != NULL && (num < 0 || num > 127))
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: can't pchar, value out of range\n", line_number);
