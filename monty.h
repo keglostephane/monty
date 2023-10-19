@@ -1,5 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
+
+#define _POSIX_C_SOURCE  200809L
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,7 +45,7 @@ stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void free_stack(stack_t *head);
-
+size_t stack_len(const stack_t *h);
 
 /******* parser.c *******/
 int read_file(char *filename, stack_t **stack);
@@ -54,5 +58,5 @@ void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
-
+void _add(stack_t **stack, unsigned int line_number);
 #endif
