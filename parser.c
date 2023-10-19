@@ -58,7 +58,8 @@ void get_func(char *opcode, stack_t **stack, unsigned int line_count)
 		{"pint", _pint}, {"pop", _pop},
 		{"swap", _swap}, {"nop", _nop},
 		{"add", _add}, {"sub", _sub},
-		{"div", _div}, {NULL, NULL}
+		{"div", _div}, {"mul", _mul},
+		{NULL, NULL}
 	};
 	int i, is_opcode = 0;
 
