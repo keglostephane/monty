@@ -27,7 +27,7 @@ int read_file(char *filename, stack_t **stack)
 
 		if (opcode == NULL)
 			line_count++;
-		if (opcode != NULL)
+		if (opcode != NULL && *opcode != '#')
 		{
 			get_func(opcode, stack, line_count);
 			if (exec_value == 1)
