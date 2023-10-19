@@ -39,11 +39,15 @@ int read_file(char *filename, stack_t **stack)
 			}
 			line_count++;
 		}
-
-
 	}
 	free(line);
 	fclose(fp);
+	if (nread == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: End of file\n");
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 	return (0);
 }
 /**
