@@ -30,3 +30,34 @@ void _mod(stack_t **stack, unsigned int line_number)
 		}
 	}
 }
+
+/**
+ * _pchar - prints the char at the top of the stack
+ *
+ * @stack: the stack
+ * @line_number: instruction line number
+ *
+ */
+void _pchar(stack_t **stack, unsigned int line_number)
+{
+	int num;
+
+	num = (*stack)->n;
+
+	if (*stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", line_number);
+		exec_value = 1;
+	}
+	if (isascii(num) == 0)
+	{
+		dprintf(STDERR_FILENO,
+			"L%d: can't pchar, value out of range\n", line_number);
+		exec_value =  1;
+	}
+	else
+	{
+		printf("%c\n", num);
+		exec_value = 0;
+	}
+}
