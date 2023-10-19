@@ -33,7 +33,7 @@ void _add(stack_t **stack, unsigned int line_number)
  */
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	int a, b;
+	int temp;
 	size_t len;
 
 	len = stack_len(*stack);
@@ -45,14 +45,9 @@ void _swap(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		a = (*stack)->n;
-		delete_dnodeint_at_index(stack, 0);
-		b = (*stack)->n;
-		delete_dnodeint_at_index(stack, 0);
-
-		if (add_dnodeint(stack, a) == NULL)
-			return;
-		if (add_dnodeint(stack, b) == NULL)
-			return;
+		temp  = (*stack)->n;
+		(*stack)->n = (*stack)->next->n;
+		(*stack)->next->n = temp;
+		exec_value = 0;
 	}
 }
