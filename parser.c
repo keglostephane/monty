@@ -54,15 +54,11 @@ int read_file(char *filename, stack_t **stack)
 void get_func(char *opcode, stack_t **stack, unsigned int line_count)
 {
 	instruction_t fspec[] = {
-		{"push", _push},
-		{"pall", _pall},
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"nop", _nop},
-		{"add", _add},
-		{"sub", _sub},
-		{NULL, NULL}
+		{"push", _push}, {"pall", _pall},
+		{"pint", _pint}, {"pop", _pop},
+		{"swap", _swap}, {"nop", _nop},
+		{"add", _add}, {"sub", _sub},
+		{"div", _div}, {NULL, NULL}
 	};
 	int i, is_opcode = 0;
 
