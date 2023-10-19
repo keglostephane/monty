@@ -64,6 +64,25 @@ void _pint(stack_t **stack, unsigned int line_number)
 		exec_value = 0;
 	}
 }
+
+/**
+ * _pop - removes the top element of the stack
+ * @stack: the stack
+ * @line_number: instruction line number
+ */
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		exec_value = 1;
+	}
+	else
+	{
+		delete_dnodeint_at_index(stack, 0);
+		exec_value = 0;
+	}
+}
 /**
  * _nop - a function that do anything on call
  * @stack: stack
