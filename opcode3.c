@@ -81,3 +81,16 @@ void _pstr(stack_t **stack, unsigned int line_number)
 
 	printf("\n");
 }
+/**
+ * _rotl - op element of the stack becomes the last one, and the second top
+ * element of the stack becomes the first one
+ * @stack: the stack
+ * @line_number: line number
+ */
+void _rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top = *stack;
+
+	add_dnodeint_end(stack, top->n);
+	_pop(stack, line_number);
+}
