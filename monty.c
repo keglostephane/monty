@@ -11,6 +11,7 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 
 	exec_value = 0;
+	stack_or_queue = 0;
 
 	if (argc != 2)
 	{
