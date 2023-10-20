@@ -15,7 +15,7 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	if (str != NULL)
 		num = strtol(str, &end, 10);
-	if (str == NULL || str == end)
+	if (str == NULL || str == end || *end != '\0')
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		exec_value = 1;
