@@ -97,3 +97,22 @@ void _rotl(stack_t **stack, unsigned int line_number)
 		_pop(stack, line_number);
 	}
 }
+/**
+ * _rotr - The last element of the stack becomes the top element of the stack
+ * @stack: the stack
+ * @line_number: line number
+ */
+void _rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *curr = *stack;
+	size_t len = stack_len(curr);
+
+	(void)line_number;
+	if (curr)
+	{
+		while (curr->next)
+			curr = curr->next;
+		add_dnodeint(stack, curr->n);
+		delete_dnodeint_at_index(stack, (int)len);
+	}
+}
