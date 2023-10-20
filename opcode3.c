@@ -91,6 +91,9 @@ void _rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top = *stack;
 
-	add_dnodeint_end(stack, top->n);
-	_pop(stack, line_number);
+	if (top)
+	{
+		add_dnodeint_end(stack, top->n);
+		_pop(stack, line_number);
+	}
 }
