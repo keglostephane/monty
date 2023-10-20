@@ -23,8 +23,16 @@ void _push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		data = (int)(num);
-		if (add_dnodeint(stack, data) != NULL)
-			exec_value = 0;
+		if (stack_or_queue == 0)
+		{
+			if (add_dnodeint(stack, data) != NULL)
+				exec_value = 0;
+		}
+		else
+		{
+			if (add_dnodeint_end(stack, data) != NULL)
+				exec_value = 0;
+		}
 	}
 }
 /**
